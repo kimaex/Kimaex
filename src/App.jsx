@@ -24,10 +24,17 @@ import {
   Zap
 } from "lucide-react";
 
+import HyperliquidPanel from "./HyperliquidPanel";
+import NearWalletPanel from "./NearWalletPanel";
+import RheaSwap from "./RheaSwap";
+import StrailsWallet from "./StrailsWallet";
+
 const navigation = [
   { name: "Overview", icon: LayoutDashboard },
   { name: "Swap", icon: ArrowLeftRight },
   { name: "Futures", icon: ChartCandlestick },
+  { name: "NEAR", icon: Wallet },
+  { name: "Strails", icon: Wallet },
   { name: "Wallet", icon: Wallet },
   { name: "Activity", icon: History }
 ];
@@ -52,8 +59,8 @@ const assets = [
     value: "₦66,536.40"
   },
   {
-    name: "Ethereum",
-    symbol: "ETH",
+    name: "near",
+    symbol: "near",
     color: "#64748b",
     price: "₦5,820,500",
     change: "-0.86%",
@@ -91,9 +98,12 @@ export default function App() {
   return (
     <div className="app-shell">
 
+      {/* SIDEBAR */}
+
       <aside className={`sidebar ${mobileNav ? "sidebar-open" : ""}`}>
         <div className="sidebar-top">
           <Logo />
+
           <button
             className="icon-btn mobile-close"
             onClick={() => setMobileNav(false)}
@@ -143,14 +153,18 @@ export default function App() {
 
           <div className="profile-card">
             <div className="avatar">JI</div>
+
             <div className="profile-text">
               <b>Jibrin Ibrahim</b>
               <small>Personal account</small>
             </div>
+
             <ChevronDown size={16} />
           </div>
         </div>
       </aside>
+
+      {/* MOBILE OVERLAY */}
 
       {mobileNav && (
         <div
@@ -160,6 +174,8 @@ export default function App() {
       )}
 
       <main className="main">
+
+        {/* TOP NAVIGATION */}
 
         <header className="topbar">
           <button
@@ -178,6 +194,7 @@ export default function App() {
           <div className="topbar-right">
             <div className="search-box">
               <Search size={16} />
+
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -194,7 +211,7 @@ export default function App() {
 
             <button
               className="network-pill"
-              onClick={() => notify("Solana network selected")}
+              onClick={() => notify("Multi-chain network selector requires configuration")}
             >
               <span className="network-dot" />
               Solana
@@ -205,39 +222,39 @@ export default function App() {
 
         <div className="content">
 
-          <div className="welcome-row">
-            <div>
-              <div className="eyebrow">
-                KIMAEX DIGITAL ASSETS
-              </div>
-
-              <h1>
-                {active === "Overview"
-                  ? "Good morning, Jibrin"
-                  : active}
-              </h1>
-
-              <p className="subtitle">
-                {active === "Overview"
-                  ? "Here's what's happening with your portfolio today."
-                  : `Explore your ${active.toLowerCase()} on Kimaex.`}
-              </p>
-            </div>
-
-            <button
-              className="mode-toggle"
-              onClick={() =>
-                setMode(mode === "Beginner" ? "Pro" : "Beginner")
-              }
-            >
-              <Sparkles size={15} />
-              {mode} mode
-              <ChevronDown size={14} />
-            </button>
-          </div>
+          {/* KIMAEX OVERVIEW */}
 
           {active === "Overview" && (
             <>
+              <div className="welcome-row">
+                <div>
+                  <div className="eyebrow">
+                    KIMAEX DIGITAL ASSETS
+                  </div>
+
+                  <h1>Good morning, Jibrin</h1>
+
+                  <p className="subtitle">
+                    Here's what's happening with your portfolio today.
+                  </p>
+                </div>
+
+                <button
+                  className="mode-toggle"
+                  onClick={() =>
+                    setMode(
+                      mode === "Beginner" ? "Pro" : "Beginner"
+                    )
+                  }
+                >
+                  <Sparkles size={15} />
+                  {mode} mode
+                  <ChevronDown size={14} />
+                </button>
+              </div>
+
+              {/* BALANCE CARD */}
+
               <section className="balance-card">
 
                 <div className="balance-head">
@@ -269,7 +286,10 @@ export default function App() {
                     <TrendingUp size={15} />
                     +₦42,805.16 (3.45%)
                   </span>
-                  <span className="muted">Past 24 hours</span>
+
+                  <span className="muted">
+                    Past 24 hours
+                  </span>
                 </div>
 
                 <div className="balance-actions">
@@ -301,6 +321,8 @@ export default function App() {
                 <div className="balance-glow" />
               </section>
 
+              {/* ASSETS */}
+
               <div className="section-heading">
                 <div>
                   <h2>Assets</h2>
@@ -316,6 +338,7 @@ export default function App() {
               </div>
 
               <section className="asset-table">
+
                 <div className="table-head">
                   <span>Asset</span>
                   <span>Price</span>
@@ -331,8 +354,10 @@ export default function App() {
                       .includes(search.toLowerCase())
                   )
                   .map((asset) => (
-                    <div className="asset-row" key={asset.symbol}>
-
+                    <div
+                      className="asset-row"
+                      key={asset.symbol}
+                    >
                       <div className="asset-name">
                         <div
                           className="coin"
@@ -347,7 +372,9 @@ export default function App() {
                         </div>
                       </div>
 
-                      <span className="price">{asset.price}</span>
+                      <span className="price">
+                        {asset.price}
+                      </span>
 
                       <span
                         className={
@@ -364,6 +391,7 @@ export default function App() {
                           {hideBalance ? "••••" : asset.balance}
                           {" "}{asset.symbol}
                         </b>
+
                         <small>
                           {hideBalance ? "••••••" : asset.value}
                         </small>
@@ -379,6 +407,8 @@ export default function App() {
                   ))}
               </section>
 
+              {/* BOTTOM DASHBOARD */}
+
               <div className="bottom-grid">
 
                 <section className="panel market-panel">
@@ -391,7 +421,10 @@ export default function App() {
 
                   <div className="market-list">
                     {assets.map((asset, index) => (
-                      <div className="market-item" key={asset.symbol}>
+                      <div
+                        className="market-item"
+                        key={asset.symbol}
+                      >
                         <span className="market-rank">
                           0{index + 1}
                         </span>
@@ -426,7 +459,7 @@ export default function App() {
                       <p>Make your next move</p>
                     </div>
 
-                    <Zap size={17} className="purple-icon" />
+                    <Zap size={17} />
                   </div>
 
                   <button
@@ -439,7 +472,9 @@ export default function App() {
 
                     <div>
                       <b>Swap tokens</b>
-                      <small>Trade across supported networks</small>
+                      <small>
+                        Trade across supported networks
+                      </small>
                     </div>
 
                     <ArrowUpRight size={15} />
@@ -460,49 +495,88 @@ export default function App() {
 
                     <ArrowUpRight size={15} />
                   </button>
+
+                  <button
+                    className="quick-action"
+                    onClick={() => setActive("NEAR")}
+                  >
+                    <div className="quick-icon purple">
+                      <Wallet size={17} />
+                    </div>
+
+                    <div>
+                      <b>NEAR Wallet</b>
+                      <small>Connect your NEAR account</small>
+                    </div>
+
+                    <ArrowUpRight size={15} />
+                  </button>
+
+                  <button
+                    className="quick-action"
+                    onClick={() => setActive("Strails")}
+                  >
+                    <div className="quick-icon blue">
+                      <Wallet size={17} />
+                    </div>
+
+                    <div>
+                      <b>Strails Wallet</b>
+                      <small>Access Strails services</small>
+                    </div>
+
+                    <ArrowUpRight size={15} />
+                  </button>
                 </section>
 
               </div>
             </>
           )}
 
-          {active !== "Overview" && (
+          {/* RHEA FINANCE SWAP */}
+
+          {active === "Swap" && (
+            <RheaSwap />
+          )}
+
+          {/* HYPERLIQUID FUTURES */}
+
+          {active === "Futures" && (
+            <HyperliquidPanel />
+          )}
+
+          {/* NEAR WALLET */}
+
+          {active === "NEAR" && (
+            <NearWalletPanel />
+          )}
+
+          {/* STRAILS WALLET */}
+
+          {active === "Strails" && (
+            <StrailsWallet />
+          )}
+
+          {/* KIMAEX WALLET */}
+
+          {active === "Wallet" && (
             <section className="feature-page">
+
               <div className="feature-icon">
-                {active === "Swap" && <ArrowLeftRight size={26} />}
-                {active === "Futures" && <ChartCandlestick size={26} />}
-                {active === "Wallet" && <Wallet size={26} />}
-                {active === "Activity" && <History size={26} />}
+                <Wallet size={26} />
               </div>
 
-              <h2>{active} on Kimaex</h2>
+              <h2>Kimaex Wallet</h2>
 
               <p>
-                This is a frontend preview. Connect approved providers
-                and secure backend services to enable real transactions.
+                Your Naira-first digital asset wallet.
+                Connect approved payment and custody providers
+                to enable deposits and withdrawals.
               </p>
-
-              {active === "Futures" && (
-                <div className="mode-switch">
-                  <button
-                    className={mode === "Beginner" ? "selected" : ""}
-                    onClick={() => setMode("Beginner")}
-                  >
-                    Beginner
-                  </button>
-
-                  <button
-                    className={mode === "Pro" ? "selected" : ""}
-                    onClick={() => setMode("Pro")}
-                  >
-                    Pro trader
-                  </button>
-                </div>
-              )}
 
               <button
                 className="primary-btn"
-                onClick={() => notify(`${active} is currently a demo`)}
+                onClick={() => notify("Wallet backend integration required")}
               >
                 Continue <ArrowUpRight size={16} />
               </button>
@@ -513,8 +587,38 @@ export default function App() {
               >
                 Back to overview
               </button>
+
             </section>
           )}
+
+          {/* TRANSACTION ACTIVITY */}
+
+          {active === "Activity" && (
+            <section className="feature-page">
+
+              <div className="feature-icon">
+                <History size={26} />
+              </div>
+
+              <h2>Transaction activity</h2>
+
+              <p>
+                Your deposits, withdrawals, swaps and futures
+                transactions will appear here when connected
+                to the Kimaex transaction backend.
+              </p>
+
+              <button
+                className="secondary-btn back-btn"
+                onClick={() => setActive("Overview")}
+              >
+                Back to overview
+              </button>
+
+            </section>
+          )}
+
+          {/* FOOTER */}
 
           <footer>
             <span>© 2026 Kimaex Technologies</span>
@@ -528,6 +632,8 @@ export default function App() {
         </div>
       </main>
 
+      {/* TOAST NOTIFICATION */}
+
       {toast && (
         <div className="toast">
           <span className="toast-check">✓</span>
@@ -537,5 +643,5 @@ export default function App() {
 
     </div>
   );
-          }
-                
+  }
+            
