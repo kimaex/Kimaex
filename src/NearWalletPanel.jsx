@@ -1,0 +1,142 @@
+
+.hyper-panel {
+  max-width: 900px;
+  margin: 25px auto;
+  padding: 25px;
+  color: #fff;
+  background: #0b0b12;
+  border: 1px solid #292536;
+  border-radius: 20px;
+  font-family: Inter, sans-serif;
+}
+
+.hyper-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hyper-heading h2 {
+  margin: 8px 0;
+  font-size: 24px;
+}
+
+.hyper-heading p,
+.hyper-selected p {
+  color: #92929f;
+  font-size: 13px;
+}
+
+.hyper-label {
+  color: #a78bfa;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.hyper-live {
+  color: #4ade80;
+  font-size: 11px;
+}
+
+.hyper-live i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #4ade80;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.hyper-network {
+  display: flex;
+  gap: 10px;
+  margin: 24px 0;
+}
+
+.hyper-network button {
+  padding: 10px 18px;
+  border: 1px solid #302b40;
+  border-radius: 10px;
+  color: #aaa;
+  background: #161622;
+  cursor: pointer;
+}
+
+.hyper-network button.chosen {
+  color: white;
+  background: #7c3aed;
+  border-color: #7c3aed;
+}
+
+.hyper-selected {
+  background: #161622;
+  border: 1px solid #302b40;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.hyper-selected label {
+  display: block;
+  color: #aaa;
+  font-size: 13px;
+}
+
+.hyper-selected select {
+  margin-top: 12px;
+  padding: 10px;
+  color: white;
+  background: #292436;
+  border: 0;
+  border-radius: 8px;
+}
+
+.hyper-selected h1 {
+  font-size: 32px;
+  margin-bottom: 0;
+}
+
+.hyper-selected h1 small {
+  font-size: 13px;
+  color: #a78bfa;
+}
+
+.hyper-market-list h3 {
+  font-size: 16px;
+}
+
+.hyper-market-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 8px;
+  color: white;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #292536;
+  cursor: pointer;
+  text-align: left;
+}
+
+.hyper-market-row small {
+  color: #a78bfa;
+}
+
+.hyper-error {
+  color: #f87171;
+  padding: 15px;
+}
+
+.hyper-notice {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #241535;
+  color: #c4b5fd;
+  font-size: 12px;
+  line-height: 1.6;
+}
+  
