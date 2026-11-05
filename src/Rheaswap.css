@@ -1,0 +1,126 @@
+
+.rhea-swap {
+  max-width: 440px;
+  margin: 30px auto;
+  padding: 24px;
+  background: #0b0b12;
+  color: #ffffff;
+  border: 1px solid #292536;
+  border-radius: 22px;
+  font-family: Inter, sans-serif;
+}
+
+.rhea-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.rhea-header h2 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.rhea-badge {
+  color: #c084fc;
+  background: #241535;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.rhea-token-box {
+  background: #161622;
+  border: 1px solid #302b40;
+  border-radius: 15px;
+  padding: 16px;
+}
+
+.rhea-token-box label {
+  color: #a1a1aa;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.rhea-token-box input {
+  background: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  font-size: 25px;
+  width: 65%;
+}
+
+.rhea-token-box select {
+  float: right;
+  padding: 10px;
+  color: white;
+  background: #292436;
+  border: none;
+  border-radius: 10px;
+}
+
+.rhea-output {
+  display: inline-block;
+  font-size: 25px;
+  color: #a1a1aa;
+  width: 65%;
+}
+
+.rhea-switch {
+  display: block;
+  margin: -12px auto;
+  position: relative;
+  z-index: 1;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 4px solid #0b0b12;
+  background: #7c3aed;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.rhea-connect,
+.rhea-submit {
+  width: 100%;
+  padding: 16px;
+  margin-top: 18px;
+  border-radius: 13px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.rhea-connect {
+  background: #241535;
+  color: #c084fc;
+}
+
+.rhea-submit {
+  background: #7c3aed;
+  color: white;
+}
+
+.rhea-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rhea-message {
+  text-align: center;
+  color: #a1a1aa;
+  font-size: 13px;
+  margin-top: 14px;
+}
+
+.rhea-footer {
+  text-align: center;
+  color: #71717a;
+  font-size: 11px;
+  margin-top: 20px;
+}
