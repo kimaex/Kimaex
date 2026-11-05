@@ -14,7 +14,13 @@
     "vite": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "lucide-react": "latest"
+    "lucide-react": "latest",
+
+    "@near-wallet-selector/core": "^10.1.4",
+    "@near-wallet-selector/my-near-wallet": "^10.1.4",
+    "@near-wallet-selector/modal-ui": "^10.1.4",
+
+    "@rhea-finance/cross-chain-aggregation-dex": "^2.1.9"
   },
   "devDependencies": {}
 }
